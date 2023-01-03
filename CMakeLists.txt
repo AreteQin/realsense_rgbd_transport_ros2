@@ -26,6 +26,19 @@ add_executable(subscriber src/subscriber.cpp)
 target_link_libraries(subscriber ${OpenCV_LIBS} ${realsense2_LIBRARY})
 ament_target_dependencies(subscriber rclcpp std_msgs realsense2 OpenCV image_transport cv_bridge)
 
+find_package(std_msgs REQUIRED)
+add_executable(talker src/talker.cpp)
+ament_target_dependencies(talker rclcpp std_msgs)
+install(TARGETS
+        talker
+        DESTINATION lib/${PROJECT_NAME})
+
+add_executable(listener src/listener.cpp)
+ament_target_dependencies(listener rclcpp std_msgs)
+install(TARGETS
+        listener
+        DESTINATION lib/${PROJECT_NAME})
+
 install(TARGETS
         publisher
         subscriber
