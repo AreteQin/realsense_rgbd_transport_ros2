@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
 
     //image_transport will publish the video that can be compressed
     image_transport::ImageTransport it(g_node);
-    image_transport::Publisher pub_color = it.advertise("/color", 1);
+    image_transport::Publisher pub_color = it.advertise("D435/color", 1);
 
     cv::Mat image;
 
@@ -26,9 +26,10 @@ int main(int argc, char **argv) {
             RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "image is empty");
             rclcpp::shutdown();
         }
-//        cv::namedWindow("/color");
-//        cv::imshow("/color", image);
-//        cv::waitKey(1);
+
+        cv::imshow("/color", image);
+        cv::waitKey(1);
+
         pub_color.publish(cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", image).toImageMsg());
         rclcpp::spin_some(g_node);
     }
