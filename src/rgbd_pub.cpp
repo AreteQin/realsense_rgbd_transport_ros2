@@ -67,6 +67,8 @@ int main(int argc, char **argv) {
 
     while (rclcpp::ok()) {
         rs2::frameset data = pipe.wait_for_frames(); // Wait for next set of frames from the camera (must be called in a loop)
+        std_msgs::msg::Header header;
+        header.stamp = rclcpp::Time::now();
 
 //    rs2::frame color_frame = color_map.colorize(data.get_color_frame());
         rs2::frame color_frame = data.get_color_frame();
@@ -84,8 +86,8 @@ int main(int argc, char **argv) {
 //        cv::waitKey(1);
 
 //    depth_cv = cv::Mat(cv::Size(640, 480), CV_8UC3, (void *) depth_frame.get_data(), cv::Mat::AUTO_STEP);
-        pub_color.publish(cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", color_cv).toImageMsg());
-        pub_depth.publish(cv_bridge::CvImage(std_msgs::msg::Header(), "mono16", depth_cv).toImageMsg());
+        pub_color.publish(cv_bridge::CvImage(header, "bgr8", color_cv).toImageMsg());
+        pub_depth.publish(cv_bridge::CvImage(header, "mono16", depth_cv).toImageMsg());
         rclcpp::spin_some(g_node);
     }
 }
