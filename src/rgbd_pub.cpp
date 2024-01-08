@@ -68,7 +68,7 @@ int main(int argc, char **argv) {
     while (rclcpp::ok()) {
         rs2::frameset data = pipe.wait_for_frames(); // Wait for next set of frames from the camera (must be called in a loop)
         std_msgs::msg::Header header;
-        header.stamp = ros::Time::now();
+        header.stamp = rclcpp::Clock().now();
 
 //    rs2::frame color_frame = color_map.colorize(data.get_color_frame());
         rs2::frame color_frame = data.get_color_frame();
