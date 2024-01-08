@@ -59,9 +59,9 @@ void DepthCallback(const sensor_msgs::msg::Image::ConstSharedPtr &msg) {
     catch (cv_bridge::Exception &e) {
         RCLCPP_ERROR(rclcpp::get_logger("depth"), "cv_bridge exception: %s", e.what());
     }
-    auto now = rclcpp::Clock().now();
-    auto delay = now - msg->header.stamp;
-    RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "delay: %f", delay.seconds());
+    // auto now = rclcpp::Clock().now();
+    // auto delay = now - msg->header.stamp;
+    // RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "delay: %f", delay.seconds());
 }
 
 int main(int argc, char **argv) {
