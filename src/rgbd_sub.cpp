@@ -36,6 +36,8 @@
 #include <cv_bridge/cv_bridge.h>
 #include <sensor_msgs/image_encodings.hpp>
 #include <rclcpp/logging.hpp>
+#include <compressed_image_transport/compressed_subscriber.h>
+#include <sensor_msgs/msg/compressed_image.hpp>
 
 void ColorCallback(const sensor_msgs::msg::Image::ConstSharedPtr &msg) {
     try {
@@ -63,16 +65,22 @@ void DepthCallback(const sensor_msgs::msg::Image::ConstSharedPtr &msg) {
 
 int main(int argc, char **argv) {
     rclcpp::init(argc, argv);
-    auto g_node = rclcpp::Node::make_shared("sub_cam_node");
+//    auto g_node = rclcpp::Node::make_shared("sub_cam_node");
 
     cv::namedWindow("D435/color");
     cv::namedWindow("D435/depth");
-    image_transport::ImageTransport it(g_node);
+//    image_transport::ImageTransport it(g_node);
+//    image_transport::Subscriber sub_color = it.subscribe("D435/color", 1, ColorCallback);
+//    image_transport::Subscriber sub_depth = it.subscribe("D435/depth", 1, DepthCallback);
+    rclcpp::NodeOptions options;
+    rclcpp::Node::SharedPtr node = rclcpp::Node::make_shared("image_listener", options);
+    image_transport::ImageTransport it(node);
     image_transport::Subscriber sub_color = it.subscribe("D435/color", 1, ColorCallback);
     image_transport::Subscriber sub_depth = it.subscribe("D435/depth", 1, DepthCallback);
+
     rclcpp::Rate rate(30.0);
     while (rclcpp::ok()) {
-        rclcpp::spin_some(g_node);
+        rclcpp::spin_some(node);
         rate.sleep();
     }
 }
