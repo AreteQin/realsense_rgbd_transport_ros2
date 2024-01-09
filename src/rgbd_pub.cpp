@@ -85,6 +85,11 @@ int main(int argc, char **argv) {
 //        cv::imshow("D435/depth", depth_cv);
 //        cv::waitKey(1);
 
+        // Print header and current time precisely until milliseconds
+//        std::cout << "Header: " << header.stamp.sec << "." << header.stamp.nanosec << std::endl;
+//        std::cout << "Current time: " << std::chrono::duration_cast<std::chrono::milliseconds>(
+//                std::chrono::system_clock::now().time_since_epoch()).count() << std::endl;
+
 //    depth_cv = cv::Mat(cv::Size(640, 480), CV_8UC3, (void *) depth_frame.get_data(), cv::Mat::AUTO_STEP);
         pub_color.publish(cv_bridge::CvImage(header, "bgr8", color_cv).toImageMsg());
         pub_depth.publish(cv_bridge::CvImage(header, "mono16", depth_cv).toImageMsg());
