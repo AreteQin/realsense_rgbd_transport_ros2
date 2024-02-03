@@ -17,9 +17,8 @@ void ColorCallback(const sensor_msgs::msg::Image::ConstSharedPtr &msg) {
     }
     // calculate time delay
     auto now = rclcpp::Clock().now();
-    RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "time now: %f", now.seconds());
-    RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "time sent: %f", msg->header.stamp.sec + msg->header.stamp.nanosec * 1e-9);
-}
+    RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "time delay: %f",
+                now.seconds() - (msg->header.stamp.sec + msg->header.stamp.nanosec * 1e-9));}
 
 void DepthCallback(const sensor_msgs::msg::Image::ConstSharedPtr &msg) {
     try {
