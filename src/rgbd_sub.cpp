@@ -33,7 +33,7 @@ void DepthCallback(const sensor_msgs::msg::Image::ConstSharedPtr &msg) {
 
 int main(int argc, char **argv) {
     rclcpp::init(argc, argv);
-    auto g_node = rclcpp::Node::make_shared("sub_cam_node");
+    auto g_node = rclcpp::Node::make_shared("sub_rgbd_node");
 
     cv::namedWindow("D435/color");
     cv::namedWindow("D435/depth");

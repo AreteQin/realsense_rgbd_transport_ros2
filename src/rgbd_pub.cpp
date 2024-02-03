@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
     // Start streaming with the default recommended configuration
     pipe.start(cfg);
 
-    auto g_node = rclcpp::Node::make_shared("sub_cam_node");
+    auto g_node = rclcpp::Node::make_shared("pub_rgbd_node");
     // image_transport will publish the video that can be compressed
     image_transport::ImageTransport it(g_node);
     image_transport::Publisher pub_color = it.advertise("/D435/color", 1);

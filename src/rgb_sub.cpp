@@ -21,7 +21,7 @@ void ColorCallback(const sensor_msgs::msg::Image::ConstSharedPtr &msg) {
 
 int main(int argc, char **argv) {
     rclcpp::init(argc, argv);
-    auto g_node = rclcpp::Node::make_shared("sub_cam_node");
+    auto g_node = rclcpp::Node::make_shared("compressed_sub_rgb_node");
     // TransportHints does not actually declare the parameter
     g_node->declare_parameter<std::string>("image_transport", "compressed");
     image_transport::TransportHints hints(g_node.get());
