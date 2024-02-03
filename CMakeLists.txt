@@ -61,6 +61,8 @@ install(TARGETS
         rgbd_sub
         rgb_pub
         rgb_sub
+        rgbd_pub_compressed
+        rgbd_sub_compressed
         DESTINATION lib/${PROJECT_NAME})
 
 ament_package()
