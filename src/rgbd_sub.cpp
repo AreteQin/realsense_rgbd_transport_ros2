@@ -1,35 +1,3 @@
-//#include <memory>
-//
-//#include "rclcpp/rclcpp.hpp"
-//#include "std_msgs/msg/string.hpp"
-//using std::placeholders::_1;
-//
-//class MinimalSubscriber : public rclcpp::Node
-//{
-//public:
-//  MinimalSubscriber()
-//  : Node("minimal_subscriber")
-//  {
-//    subscription_ = this->create_subscription<std_msgs::msg::String>(
-//      "topic", 10, std::bind(&MinimalSubscriber::topic_callback, this, _1));
-//  }
-//
-//private:
-//  void topic_callback(const std_msgs::msg::String::SharedPtr msg) const
-//  {
-//    RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->data.c_str());
-//  }
-//  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
-//};
-//
-//int main(int argc, char * argv[])
-//{
-//  rclcpp::init(argc, argv);
-//  rclcpp::spin(std::make_shared<MinimalSubscriber>());
-//  rclcpp::shutdown();
-//  return 0;
-//}
-
 #include <rclcpp/rclcpp.hpp>
 #include <image_transport/image_transport.h>
 #include <opencv2/highgui/highgui.hpp>
@@ -73,10 +41,8 @@ int main(int argc, char **argv) {
     cv::namedWindow("D435/depth");
 
     image_transport::ImageTransport it(g_node);
-//    image_transport::Subscriber sub_color = it.subscribe("/D435/color", 1, ColorCallback);
     image_transport::TransportHints hints(g_node.get());
     image_transport::Subscriber sub_color = it.subscribe("/D435/color", 1, ColorCallback, &hints);
-//    image_transport::Subscriber sub_depth = it.subscribe("/D435/depth", 1, DepthCallback);
     image_transport::Subscriber sub_depth = it.subscribe("/D435/depth", 1, DepthCallback, &hints);
 
     rclcpp::Rate rate(30.0);
