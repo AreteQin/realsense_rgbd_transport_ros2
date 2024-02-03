@@ -37,7 +37,7 @@ int main(int argc, char **argv) {
     // TransportHints does not actually declare the parameter
     g_node->declare_parameter<std::string>("image_transport", "compressed");
     // set depth image format parameter "D435.depth.format" to "png"
-    g_node->declare_parameter<std::string>("D435.depth.compressed.format", "png");
+//    g_node->declare_parameter<std::string>("D435.depth.compressed.format", "png");
 
     cv::namedWindow("D435/color");
     cv::namedWindow("D435/depth");
