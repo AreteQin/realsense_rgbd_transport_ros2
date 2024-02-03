@@ -7,7 +7,10 @@ sudo apt install ros-${ROS_DISTRO}-compressed-image-transport
 
 ## Usage
 ```bash
-ros2 run realsense_rgbd_transport_ros2 rgbd_sub --ros-args --remap _image_transport:=compressed
+ros2 run realsense_rgbd_transport_ros2 rgbd_pub
+ros2 run realsense_rgbd_transport_ros2 rgbd_sub
+ros2 run realsense_rgbd_transport_ros2 rgbd_pub_compressed
+ros2 run realsense_rgbd_transport_ros2 rgbd_sub_compressed
 ```
 
 ## Performance
