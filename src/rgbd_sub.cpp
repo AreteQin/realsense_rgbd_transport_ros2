@@ -65,22 +65,23 @@ void DepthCallback(const sensor_msgs::msg::Image::ConstSharedPtr &msg) {
 
 int main(int argc, char **argv) {
     rclcpp::init(argc, argv);
-//    auto g_node = rclcpp::Node::make_shared("sub_cam_node");
+    auto g_node = rclcpp::Node::make_shared("sub_cam_node");
+    // TransportHints does not actually declare the parameter
+    g_node->declare_parameter<std::string>("image_transport", "compressed");
 
     cv::namedWindow("D435/color");
     cv::namedWindow("D435/depth");
-//    image_transport::ImageTransport it(g_node);
-//    image_transport::Subscriber sub_color = it.subscribe("D435/color", 1, ColorCallback);
-//    image_transport::Subscriber sub_depth = it.subscribe("D435/depth", 1, DepthCallback);
-    rclcpp::NodeOptions options;
-    rclcpp::Node::SharedPtr node = rclcpp::Node::make_shared("image_listener", options);
-    image_transport::ImageTransport it(node);
-    image_transport::Subscriber sub_color = it.subscribe("D435/color", 1, ColorCallback);
-    image_transport::Subscriber sub_depth = it.subscribe("D435/depth", 1, DepthCallback);
+
+    image_transport::ImageTransport it(g_node);
+//    image_transport::Subscriber sub_color = it.subscribe("/D435/color", 1, ColorCallback);
+    image_transport::TransportHints hints(g_node.get());
+    image_transport::Subscriber sub_color = it.subscribe("/D435/color", 1, ColorCallback, &hints);
+//    image_transport::Subscriber sub_depth = it.subscribe("/D435/depth", 1, DepthCallback);
+    image_transport::Subscriber sub_depth = it.subscribe("/D435/depth", 1, DepthCallback, &hints);
 
     rclcpp::Rate rate(30.0);
     while (rclcpp::ok()) {
-        rclcpp::spin_some(node);
+        rclcpp::spin_some(g_node);
         rate.sleep();
     }
 }

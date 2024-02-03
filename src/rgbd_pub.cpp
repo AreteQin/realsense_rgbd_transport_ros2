@@ -56,17 +56,13 @@ int main(int argc, char **argv) {
     // Start streaming with the default recommended configuration
     pipe.start(cfg);
 
+    auto g_node = rclcpp::Node::make_shared("sub_cam_node");
+    // set depth image format parameter to png
+    g_node->declare_parameter<std::string>("D435.depth.format", "png");
     //image_transport will publish the video that can be compressed
-//    image_transport::ImageTransport it(g_node);
-//    image_transport::Publisher pub_color = it.advertise("D435/color", 1);
-//    image_transport::Publisher pub_depth = it.advertise("D435/depth", 1);
-
-    //compressed_image_transport will publish the video that can be compressed
-    rclcpp::NodeOptions options;
-    rclcpp::Node::SharedPtr node = rclcpp::Node::make_shared("image_publisher", options);
-    image_transport::ImageTransport it(node);
-    image_transport::Publisher pub_color = it.advertise("D435/color", 1);
-    image_transport::Publisher pub_depth = it.advertise("D435/depth", 1);
+    image_transport::ImageTransport it(g_node);
+    image_transport::Publisher pub_color = it.advertise("/D435/color", 1);
+    image_transport::Publisher pub_depth = it.advertise("/D435/depth", 1);
 
 //    cv::Mat image = cv::imread(argv[1], cv::IMREAD_COLOR);
 //    std_msgs::msg::Header hdr;
@@ -119,6 +115,6 @@ int main(int argc, char **argv) {
         pub_color.publish(msg_color);
         pub_depth.publish(msg_depth);
 
-        rclcpp::spin_some(node);
+        rclcpp::spin_some(g_node);
     }
 }
