@@ -15,10 +15,6 @@ void ColorCallback(const sensor_msgs::msg::Image::ConstSharedPtr &msg) {
     catch (cv_bridge::Exception &e) {
         RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "cv_bridge exception: %s", e.what());
     }
-    // calculate time delay
-    auto now = rclcpp::Clock().now();
-    RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "time delay: %f",
-                now.seconds() - (msg->header.stamp.sec + msg->header.stamp.nanosec * 1e-9));
 }
 
 void DepthCallback(const sensor_msgs::msg::Image::ConstSharedPtr &msg) {
