@@ -12,12 +12,13 @@ int main(int argc, char **argv) {
     rs2::pipeline pipe;
     rs2::config cfg;
     cfg.enable_stream(RS2_STREAM_COLOR, 640, 480, RS2_FORMAT_BGR8, 30);
-    //cfg.enable_stream(RS2_STREAM_INFRARED, 640, 480, RS2_FORMAT_Y8, 30);
     cfg.enable_stream(RS2_STREAM_DEPTH, 640, 480, RS2_FORMAT_Z16, 30);
     // Start streaming with the default recommended configuration
     pipe.start(cfg);
 
-    auto g_node = rclcpp::Node::make_shared("pub_rgbd_node");
+    auto g_node = rclcpp::Node::make_shared("compressed_pub_rgbd_node");
+    // set depth image format parameter "D435.depth.format" to "png"
+    g_node->declare_parameter<std::string>("D435.depth.compressed.format", "png");
     // image_transport will publish the video that can be compressed
     image_transport::ImageTransport it(g_node);
     image_transport::Publisher pub_color = it.advertise("/D435/color", 1);

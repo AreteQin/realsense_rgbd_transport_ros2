@@ -27,10 +27,6 @@ add_executable(rgbd_sub src/rgbd_sub.cpp)
 target_link_libraries(rgbd_sub ${OpenCV_LIBS})
 ament_target_dependencies(rgbd_sub rclcpp std_msgs OpenCV image_transport cv_bridge)
 
-add_executable(rgbd_pub_compressed src/rgbd_pub_compressed.cpp)
-target_link_libraries(rgbd_pub_compressed ${OpenCV_LIBS} ${realsense2_LIBRARY})
-ament_target_dependencies(rgbd_pub_compressed rclcpp std_msgs realsense2 OpenCV image_transport cv_bridge)
-
 add_executable(rgbd_sub_compressed src/rgbd_sub_compressed.cpp)
 target_link_libraries(rgbd_sub_compressed ${OpenCV_LIBS})
 ament_target_dependencies(rgbd_sub_compressed rclcpp std_msgs OpenCV image_transport cv_bridge)
@@ -61,7 +57,6 @@ install(TARGETS
         rgbd_sub
         rgb_pub
         rgb_sub
-        rgbd_pub_compressed
         rgbd_sub_compressed
         DESTINATION lib/${PROJECT_NAME})
 
