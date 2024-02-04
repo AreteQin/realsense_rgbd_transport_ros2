@@ -42,8 +42,10 @@ int main(int argc, char **argv) {
 
     image_transport::ImageTransport it(g_node);
     image_transport::TransportHints hints(g_node.get());
-    image_transport::Subscriber sub_color = it.subscribe("/D435/color", 1, ColorCallback, &hints);
-    image_transport::Subscriber sub_depth = it.subscribe("/D435/depth", 1, DepthCallback, &hints);
+    image_transport::Subscriber sub_color =
+            it.subscribe("/D435/color", 10, ColorCallback, &hints);
+    image_transport::Subscriber sub_depth =
+            it.subscribe("/D435/depth", 10, DepthCallback, &hints);
 
     rclcpp::Rate rate(30.0);
     while (rclcpp::ok()) {

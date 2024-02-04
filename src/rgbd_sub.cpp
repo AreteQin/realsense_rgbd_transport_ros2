@@ -18,7 +18,8 @@ void ColorCallback(const sensor_msgs::msg::Image::ConstSharedPtr &msg) {
     // calculate time delay
     auto now = rclcpp::Clock().now();
     RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "time delay: %f",
-                now.seconds() - (msg->header.stamp.sec + msg->header.stamp.nanosec * 1e-9));}
+                now.seconds() - (msg->header.stamp.sec + msg->header.stamp.nanosec * 1e-9));
+}
 
 void DepthCallback(const sensor_msgs::msg::Image::ConstSharedPtr &msg) {
     try {
@@ -39,8 +40,10 @@ int main(int argc, char **argv) {
 
     image_transport::ImageTransport it(g_node);
     image_transport::TransportHints hints(g_node.get());
-    image_transport::Subscriber sub_color = it.subscribe("/D435/color", 1, ColorCallback, &hints);
-    image_transport::Subscriber sub_depth = it.subscribe("/D435/depth", 1, DepthCallback, &hints);
+    image_transport::Subscriber sub_color =
+            it.subscribe("/D435/color", 10, ColorCallback, &hints);
+    image_transport::Subscriber sub_depth =
+            it.subscribe("/D435/depth", 10, DepthCallback, &hints);
 
     rclcpp::Rate rate(30.0);
     while (rclcpp::ok()) {
