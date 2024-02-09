@@ -9,7 +9,7 @@
 
 void ColorCallback(const sensor_msgs::msg::Image::ConstSharedPtr &msg) {
     try {
-        cv::imshow("D435/color", cv_bridge::toCvShare(msg, "bgr8")->image);
+        cv::imshow("/camera/color/image_raw", cv_bridge::toCvShare(msg, "bgr8")->image);
         cv::waitKey(1);
     }
     catch (cv_bridge::Exception &e) {
@@ -19,7 +19,7 @@ void ColorCallback(const sensor_msgs::msg::Image::ConstSharedPtr &msg) {
 
 void DepthCallback(const sensor_msgs::msg::Image::ConstSharedPtr &msg) {
     try {
-        cv::imshow("D435/depth", cv_bridge::toCvShare(msg, "mono16")->image);
+        cv::imshow("/camera/depth/image_rect_raw", cv_bridge::toCvShare(msg, "mono16")->image);
         cv::waitKey(1);
     }
     catch (cv_bridge::Exception &e) {
@@ -33,15 +33,12 @@ int main(int argc, char **argv) {
     // TransportHints does not actually declare the parameter
     g_node->declare_parameter<std::string>("image_transport", "compressed");
 
-    cv::namedWindow("D435/color");
-    cv::namedWindow("D435/depth");
-
     image_transport::ImageTransport it(g_node);
     image_transport::TransportHints hints(g_node.get());
     image_transport::Subscriber sub_color =
-            it.subscribe("/D435/color", 10, ColorCallback, &hints);
+            it.subscribe("/camera/color/image_raw", 10, ColorCallback, &hints);
     image_transport::Subscriber sub_depth =
-            it.subscribe("/D435/depth", 10, DepthCallback, &hints);
+            it.subscribe("/camera/depth/image_rect_raw", 10, DepthCallback, &hints);
 
     rclcpp::Rate rate(30.0);
     while (rclcpp::ok()) {

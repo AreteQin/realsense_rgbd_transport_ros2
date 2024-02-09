@@ -21,8 +21,8 @@ int main(int argc, char **argv) {
     g_node->declare_parameter<std::string>("D435.depth.compressed.format", "png");
     // image_transport will publish the video that can be compressed
     image_transport::ImageTransport it(g_node);
-    image_transport::Publisher pub_color = it.advertise("/D435/color", 10);
-    image_transport::Publisher pub_depth = it.advertise("/D435/depth", 10);
+    image_transport::Publisher pub_color = it.advertise("/camera/color/image_raw", 10);
+    image_transport::Publisher pub_depth = it.advertise("/camera/depth/image_rect_raw", 10);
 
     cv::Mat color_cv, depth_cv;
 
