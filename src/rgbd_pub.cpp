@@ -16,9 +16,9 @@ int main(int argc, char **argv) {
     // Start streaming with the default recommended configuration
     pipe.start(cfg);
 
-    auto g_node = rclcpp::Node::make_shared("compressed_pub_rgbd_node");
-    // set depth image format parameter "D435.depth.format" to "png"
-    g_node->declare_parameter<std::string>("D435.depth.compressed.format", "png");
+    auto g_node = rclcpp::Node::make_shared("pub_rgbd_node");
+    // set depth image format parameter "camera.depth.image_rect_raw.format" to "png"
+    g_node->declare_parameter<std::string>("camera.depth.image_rect_raw.format", "png");
     // image_transport will publish the video that can be compressed
     image_transport::ImageTransport it(g_node);
     image_transport::Publisher pub_color = it.advertise("/camera/color/image_raw", 10);
