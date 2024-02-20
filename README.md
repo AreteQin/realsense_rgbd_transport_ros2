@@ -31,8 +31,8 @@ ros2 run realsense_rgbd_transport_ros2 rgbd_sub_compressed
 | ROS2 foxy                | Ubuntu 20.04 | 5G   | Yes        | 3.265     | 0.07    | 29.99     |
 | ROS2 foxy                | Ubuntu 20.04 | 2.4G | No         |           |         |           |
 | ROS2 foxy                | Ubuntu 20.04 | 2.4G | Yes        |           |         |           |
-| foxy and noetic (bridge) | Ubuntu 20.04 | 5G   | No         |           |         |           |
-| ROS2 foxy                | Ubuntu 20.04 | 5G   | Yes        |           |         |           |
+| foxy and noetic (bridge) | Ubuntu 20.04 | 5G   | No         | 29.08     | 0.061   | 22.663    |
+| ROS2 foxy                | Ubuntu 20.04 | 5G   | Yes        | 4.14      | -0.027  | 30.02     |
 | ROS2 foxy                | Ubuntu 20.04 | 2.4G | No         |           |         |           |
 | ROS2 foxy                | Ubuntu 20.04 | 2.4G | Yes        |           |         |           |
 
