@@ -22,9 +22,9 @@ ros2 run realsense_rgbd_transport_ros2 rgbd_sub_compressed
 | ROS2 foxy                | Ubuntu 20.04 | 5G   | No         | 35.19     | 0.055s  | 23.1      |
 | ROS2 foxy                | Ubuntu 20.04 | 5G   | Yes        | 3.34      | 0.004s  | 29.97     |
 | foxy (bridge) and noetic | Ubuntu 20.04 | 5G   | No         | 28.87     | 0.327s  | 21.5      |
-| ROS2 foxy                | Ubuntu 20.04 | 5G   | Yes        | 3.265     | 0.07    | 29.99     |
+| foxy (bridge) and noetic | Ubuntu 20.04 | 5G   | Yes        | 3.265     | 0.07    | 29.99     |
 | foxy and noetic (bridge) | Ubuntu 20.04 | 5G   | No         | 29.08     | 0.061   | 22.663    |
-| ROS2 foxy                | Ubuntu 20.04 | 5G   | Yes        | 4.14      | -0.027  | 30.02     |
+| foxy and noetic (bridge) | Ubuntu 20.04 | 5G   | Yes        | 4.14      | -0.027  | 30.02     |
 
 \# means the value is very unstable.
 
