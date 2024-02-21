@@ -19,12 +19,12 @@ ros2 run realsense_rgbd_transport_ros2 rgbd_sub_compressed
 | ROS2 Rolling             | Ubuntu 22.04 | 5G   | Yes        | 4.2Mbps   | 0.1s    | 29.9      |
 | ROS1 Noetic              | Ubuntu 20.04 | 5G   | No         | 30Mbps #  | 0.5s    | 20 #      |
 | ROS1 Noetic              | Ubuntu 20.04 | 5G   | Yes        | 1.27Mbps  | 0.53s   | 20        |
-| ROS2 foxy                | Ubuntu 20.04 | 5G   | No         | 35.19     | 0.055s  | 23.1      |
-| ROS2 foxy                | Ubuntu 20.04 | 5G   | Yes        | 3.34      | 0.004s  | 29.97     |
-| foxy (bridge) and noetic | Ubuntu 20.04 | 5G   | No         | 28.87     | 0.327s  | 21.5      |
-| foxy (bridge) and noetic | Ubuntu 20.04 | 5G   | Yes        | 3.265     | 0.07    | 29.99     |
-| foxy and noetic (bridge) | Ubuntu 20.04 | 5G   | No         | 29.08     | 0.061   | 22.663    |
-| foxy and noetic (bridge) | Ubuntu 20.04 | 5G   | Yes        | 4.14      | -0.027  | 30.02     |
+| ROS2 Foxy                | Ubuntu 20.04 | 5G   | No         | 35.19Mbps | 0.055s  | 23.1      |
+| ROS2 Foxy                | Ubuntu 20.04 | 5G   | Yes        | 3.34Mbps  | 0.004s  | 29.97     |
+| Foxy (bridge) and Noetic | Ubuntu 20.04 | 5G   | No         | 28.87Mbps | 0.327s  | 21.5      |
+| Foxy (bridge) and Noetic | Ubuntu 20.04 | 5G   | Yes        | 3.265Mbps | 0.07    | 29.99     |
+| Foxy and Noetic (bridge) | Ubuntu 20.04 | 5G   | No         | 29.08Mbps | 0.061   | 22.663    |
+| Foxy and Noetic (bridge) | Ubuntu 20.04 | 5G   | Yes        | 4.14Mbps  | -0.027  | 30.02     |
 
 \# means the value is very unstable.
 
