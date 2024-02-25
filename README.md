@@ -1,9 +1,7 @@
 # realsense_rgbd_transport_ros2
 
 ## Dependencies
-```bash
-sudo apt install ros-${ROS_DISTRO}-compressed-image-transport
-```
+### Realsense SDK
 
 ## Usage
 ```bash
