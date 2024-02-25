@@ -17,6 +17,7 @@
     <depend>image_transport</depend>
     <depend>sensor_msgs</depend>
     <depend>std_msgs</depend>
+    <depend>compressed_image_transport</depend>
 
     <export>
         <build_type>ament_cmake</build_type>

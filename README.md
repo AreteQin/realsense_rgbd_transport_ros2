@@ -2,6 +2,10 @@
 
 ## Dependencies
 ### Realsense SDK
+```bash
+. /opt/ros/foxy/setup.bash
+sudo apt install ros-${ROS_DISTRO}-compressed-image-transport
+```
 
 ## Usage
 ```bash

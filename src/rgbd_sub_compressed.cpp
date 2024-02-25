@@ -4,8 +4,7 @@
 #include <cv_bridge/cv_bridge.h>
 #include <sensor_msgs/image_encodings.hpp>
 #include <rclcpp/logging.hpp>
-//#include <compressed_image_transport/compressed_subscriber.h>
-//#include <sensor_msgs/msg/compressed_image.hpp>
+#include <compressed_image_transport/compressed_subscriber.h>
 
 void ColorCallback(const sensor_msgs::msg::Image::ConstSharedPtr &msg) {
     try {
