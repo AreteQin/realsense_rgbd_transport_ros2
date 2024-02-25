@@ -3,7 +3,7 @@
 //
 
 #include <cv_bridge/cv_bridge.h>
-#include <image_transport/image_transport.hpp>
+#include <image_transport/image_transport.h>
 //#include <compressed_image_transport/compressed_publisher.h>
 #include <opencv2/highgui/highgui.hpp>
 #include <rclcpp/rclcpp.hpp>
