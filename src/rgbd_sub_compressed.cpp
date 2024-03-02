@@ -29,7 +29,7 @@ void DepthCallback(const sensor_msgs::msg::Image::ConstSharedPtr &msg) {
 int main(int argc, char **argv) {
     rclcpp::init(argc, argv);
     auto g_node = rclcpp::Node::make_shared("compressed_sub_rgbd_node");
-    // TransportHints does not actually declare the parameter
+    // set image_transport parameter to "compressed"
     g_node->declare_parameter<std::string>("image_transport", "compressed");
 
     image_transport::ImageTransport it(g_node);

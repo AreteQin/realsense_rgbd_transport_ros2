@@ -56,11 +56,23 @@ ament_target_dependencies(rgbd_sub_compressed
         compressed_image_transport
 )
 
+add_executable(qcar_sub src/qcar_sub.cpp)
+target_link_libraries(qcar_sub ${OpenCV_LIBS})
+ament_target_dependencies(qcar_sub
+        rclcpp
+        std_msgs
+        OpenCV
+        image_transport
+        cv_bridge
+        compressed_image_transport
+)
+
 install(TARGETS
         rgbd_pub
         rgbd_pub_aligned
         rgbd_sub
         rgbd_sub_compressed
+        qcar_sub
         DESTINATION lib/${PROJECT_NAME})
 
 ament_package()
