@@ -6,7 +6,14 @@
 #include <memory>
 #include <string>
 #include <rclcpp/rclcpp.hpp>
+
+// change the header file's name according to the ROS2 version
+#if defined(ROS2_DISTRO_FOXY)
+#include <cv_bridge/cv_bridge.h>
+#else
 #include <cv_bridge/cv_bridge.hpp>
+#endif
+
 #include <opencv2/highgui/highgui.hpp>
 #include <sensor_msgs/msg/image.hpp>
 #include <sensor_msgs/msg/compressed_image.hpp>
