@@ -19,6 +19,10 @@ find_package(compressed_image_transport REQUIRED)
 find_package(realsense2 REQUIRED)
 find_package(OpenCV REQUIRED)
 
+include_directories(
+  ${cv_bridge_INCLUDE_DIRS}
+)
+
 add_executable(rgbd_pub src/rgbd_pub.cpp)
 target_link_libraries(rgbd_pub ${OpenCV_LIBS} ${realsense2_LIBRARY})
 ament_target_dependencies(rgbd_pub
