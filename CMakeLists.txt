@@ -1,14 +1,22 @@
 cmake_minimum_required(VERSION 3.5)
 project(realsense_rgbd_transport_ros2)
 
-#Default to C++14
-if (NOT CMAKE_CXX_STANDARD)
-    set(CMAKE_CXX_STANDARD 14)
-endif ()
+##Default to C++14
+#if (NOT CMAKE_CXX_STANDARD)
+#    set(CMAKE_CXX_STANDARD 14)
+#endif ()
+#
+#if (CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+#    add_compile_options(-Wall -Wextra -Wpedantic)
+#endif ()
 
-if (CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    add_compile_options(-Wall -Wextra -Wpedantic)
-endif ()
+# For ROS2 Foxy
+find_package(rosidl_default_generators QUIET)
+
+if (rosidl_default_generators_VERSION VERSION_LESS "2.0.0")
+    message(STATUS "Detected ROS 2 Foxy")
+    add_definitions(-DROS2_DISTRO_FOXY)
+endif()
 
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)

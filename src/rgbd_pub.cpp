@@ -1,4 +1,9 @@
-#include <cv_bridge/cv_bridge.hpp>
+// change the header file's name according to the ROS2 version
+#if defined(ROS2_DISTRO_FOXY)
+#include <cv_bridge/cv_bridge.h>
+#else #include <cv_bridge/cv_bridge.h>
+#endif
+
 #include <image_transport/image_transport.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <rclcpp/rclcpp.hpp>
