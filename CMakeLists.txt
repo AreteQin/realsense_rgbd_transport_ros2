@@ -11,9 +11,15 @@ project(realsense_rgbd_transport_ros2)
 #endif ()
 
 # For ROS2 Foxy
-find_package(rosidl_default_generators QUIET)
-
-if (rosidl_default_generators_VERSION VERSION_LESS "2.0.0")
+# Check the ROS distribution
+execute_process(
+        COMMAND bash -c "echo $ROS_DISTRO"
+        OUTPUT_VARIABLE ROS_DISTRO
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+# Print the ROS distribution (optional, for debugging)
+message(STATUS "ROS Distribution: ${ROS_DISTRO}")
+if (ROS_DISTRO STREQUAL "foxy")
     message(STATUS "Detected ROS 2 Foxy")
     add_definitions(-DROS2_DISTRO_FOXY)
 endif()
