@@ -45,10 +45,11 @@ ros2 run realsense_rgbd_transport_ros2 rgbd_sub_compressed
 
 \# means the value is very unstable.
 
-| Version      | Platform     | WiFi | Compressed | BandWidth | Latency | Frequency |
-|--------------|--------------|------|------------|-----------|---------|-----------|
-| ROS2 Rolling | Ubuntu 22.04 | 5G   | No         | 42Mbps    | 0.115s  | 24        |
-| ROS2 Rolling | Ubuntu 22.04 | 5G   | Yes        | 4.2Mbps   | 0.1s    | 29.9      |
+| Version      | Platform     | WiFi | Compressed | BandWidth | Latency | Frequency | Router |
+|--------------|--------------|------|------------|-----------|---------|-----------|--------|
+| ROS2 Rolling | Ubuntu 22.04 | 5G   | No         | 42Mbps    | 0.115s  | 24        |        |
+| ROS2 Rolling | Ubuntu 22.04 | 5G   | Yes        | 4.2Mbps   | 0.1s    | 29.9      |        |
+| ROS2 Humble  | Ubuntu 22.04 | 5G   | No         | 27Mbps    | 0.057s  | 29.4      | AX3000 |
 
 \# means the value is very unstable.
 
