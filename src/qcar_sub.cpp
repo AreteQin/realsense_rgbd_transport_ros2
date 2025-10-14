@@ -8,10 +8,10 @@
 #include <rclcpp/rclcpp.hpp>
 
 // change the header file's name according to the ROS2 version
-#if defined(ROS2_DISTRO_FOXY)
-#include <cv_bridge/cv_bridge.h>
-#else
+#if defined(ROS2_DISTRO_ROLLING)
 #include <cv_bridge/cv_bridge.hpp>
+#else
+#include <cv_bridge/cv_bridge.h>
 #endif
 
 #include <opencv2/highgui/highgui.hpp>
